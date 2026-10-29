@@ -1,0 +1,194 @@
+[
+  {
+    "duration_s": 9.900000000000091,
+    "method": "Constant-Velocity",
+    "speed_mae": 1.8205732583999634,
+    "ate_rmse": 12.008843535196307,
+    "final_drift_m": 21.789275243210962,
+    "drift_pct": 19.17994851162937
+  },
+  {
+    "duration_s": 9.900000000000091,
+    "method": "IMU-Kinematic",
+    "speed_mae": 1.5481536149978639,
+    "ate_rmse": 16.41460154450711,
+    "final_drift_m": 32.27318055563154,
+    "drift_pct": 28.324512064686964
+  },
+  {
+    "duration_s": 9.900000000000091,
+    "method": "Last-Known-Speed",
+    "speed_mae": 1.8205732583999634,
+    "ate_rmse": 16.67124852009991,
+    "final_drift_m": 32.369068235595755,
+    "drift_pct": 28.553166399312964
+  },
+  {
+    "duration_s": 9.900000000000091,
+    "method": "Zero-Speed",
+    "speed_mae": 11.346646690368653,
+    "ate_rmse": 66.33281040318089,
+    "final_drift_m": 114.4893184714419,
+    "drift_pct": 100.89856020489671
+  },
+  {
+    "duration_s": 29.900000000000006,
+    "method": "Constant-Velocity",
+    "speed_mae": 0.9891390204429626,
+    "ate_rmse": 77.04723553250804,
+    "final_drift_m": 134.64144385524077,
+    "drift_pct": 44.904339321575016
+  },
+  {
+    "duration_s": 29.900000000000006,
+    "method": "IMU-Kinematic",
+    "speed_mae": 1.5002765655517578,
+    "ate_rmse": 151.96792683059337,
+    "final_drift_m": 275.4816547181513,
+    "drift_pct": 91.87603271421195
+  },
+  {
+    "duration_s": 29.900000000000006,
+    "method": "Last-Known-Speed",
+    "speed_mae": 0.9891390204429626,
+    "ate_rmse": 155.33513674698054,
+    "final_drift_m": 279.15207905242016,
+    "drift_pct": 93.10015787984356
+  },
+  {
+    "duration_s": 29.900000000000006,
+    "method": "Zero-Speed",
+    "speed_mae": 9.984780311584473,
+    "ate_rmse": 177.43427886101676,
+    "final_drift_m": 298.255863744671,
+    "drift_pct": 99.47147124060525
+  },
+  {
+    "duration_s": 29.90000000000009,
+    "method": "Constant-Velocity",
+    "speed_mae": 3.893037796020508,
+    "ate_rmse": 57.383309870017975,
+    "final_drift_m": 127.4978974342343,
+    "drift_pct": 78.82280283612911
+  },
+  {
+    "duration_s": 29.90000000000009,
+    "method": "IMU-Kinematic",
+    "speed_mae": 4.307275235652924,
+    "ate_rmse": 89.31907696041333,
+    "final_drift_m": 190.7347267378484,
+    "drift_pct": 91.85882771362633
+  },
+  {
+    "duration_s": 29.90000000000009,
+    "method": "Last-Known-Speed",
+    "speed_mae": 3.893037796020508,
+    "ate_rmse": 94.88814861138806,
+    "final_drift_m": 197.7730171240159,
+    "drift_pct": 102.93414916857259
+  },
+  {
+    "duration_s": 29.90000000000009,
+    "method": "Zero-Speed",
+    "speed_mae": 8.059166967868805,
+    "ate_rmse": 153.47185965035925,
+    "final_drift_m": 235.71013110789906,
+    "drift_pct": 97.66246868712507
+  },
+  {
+    "duration_s": 59.89999999999998,
+    "method": "Constant-Velocity",
+    "speed_mae": 3.740316867828369,
+    "ate_rmse": 168.73360178483756,
+    "final_drift_m": 340.31474013842904,
+    "drift_pct": 93.23796171103955
+  },
+  {
+    "duration_s": 59.89999999999998,
+    "method": "IMU-Kinematic",
+    "speed_mae": 2.9396891593933105,
+    "ate_rmse": 109.24202260481624,
+    "final_drift_m": 204.90516889452365,
+    "drift_pct": 56.13903260261491
+  },
+  {
+    "duration_s": 59.89999999999998,
+    "method": "Last-Known-Speed",
+    "speed_mae": 3.740316867828369,
+    "ate_rmse": 137.62465989587284,
+    "final_drift_m": 243.61033167311555,
+    "drift_pct": 66.74330582246417
+  },
+  {
+    "duration_s": 59.89999999999998,
+    "method": "Zero-Speed",
+    "speed_mae": 6.08335018157959,
+    "ate_rmse": 174.29627245722213,
+    "final_drift_m": 284.2676286188745,
+    "drift_pct": 77.88241632458659
+  },
+  {
+    "duration_s": 59.900000000000006,
+    "method": "Constant-Velocity",
+    "speed_mae": 2.203157901763916,
+    "ate_rmse": 181.94948838237823,
+    "final_drift_m": 416.0284219468699,
+    "drift_pct": 84.89642304333363
+  },
+  {
+    "duration_s": 59.900000000000006,
+    "method": "IMU-Kinematic",
+    "speed_mae": 2.4922003746032715,
+    "ate_rmse": 319.96942687384416,
+    "final_drift_m": 601.1653445629686,
+    "drift_pct": 122.67620364054599
+  },
+  {
+    "duration_s": 59.900000000000006,
+    "method": "Last-Known-Speed",
+    "speed_mae": 2.203157901763916,
+    "ate_rmse": 328.15893587385585,
+    "final_drift_m": 621.2263317717866,
+    "drift_pct": 126.76992889320245
+  },
+  {
+    "duration_s": 59.900000000000006,
+    "method": "Zero-Speed",
+    "speed_mae": 8.150151252746582,
+    "ate_rmse": 276.5439492610595,
+    "final_drift_m": 384.45919885388594,
+    "drift_pct": 78.45428116680189
+  },
+  {
+    "duration_s": 59.90000000000009,
+    "method": "Constant-Velocity",
+    "speed_mae": 4.543630043665568,
+    "ate_rmse": 183.68502147795434,
+    "final_drift_m": 326.5128306808444,
+    "drift_pct": 76.21059339150545
+  },
+  {
+    "duration_s": 59.90000000000009,
+    "method": "IMU-Kinematic",
+    "speed_mae": 4.257217168807983,
+    "ate_rmse": 182.198745168276,
+    "final_drift_m": 271.0620555595156,
+    "drift_pct": 59.76055854196298
+  },
+  {
+    "duration_s": 59.90000000000009,
+    "method": "Last-Known-Speed",
+    "speed_mae": 4.543630043665568,
+    "ate_rmse": 193.0949340524213,
+    "final_drift_m": 301.69158090072654,
+    "drift_pct": 72.83365319295677
+  },
+  {
+    "duration_s": 59.90000000000009,
+    "method": "Zero-Speed",
+    "speed_mae": 7.764476617177327,
+    "ate_rmse": 268.56361796984646,
+    "final_drift_m": 445.4012533514292,
+    "drift_pct": 95.3894883834256
+  }
+]

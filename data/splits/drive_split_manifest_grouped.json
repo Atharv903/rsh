@@ -1,0 +1,31 @@
+{
+  "split_type": "grouped_session_isolated_partition",
+  "description": "Zero-leakage partition grouping all fragments of a single journey into the same split.",
+  "primary_target": "scalar_forward_speed_mps",
+  "splits": {
+    "train": {
+      "session": "Sept 8, 2019 (Coventry-Warwickshire)",
+      "drives": [
+        "S1",
+        "S2"
+      ],
+      "total_windows": 14525
+    },
+    "val": {
+      "session": "Sept 4, 2019 (Coventry-Rugby Round Trip)",
+      "drives": [
+        "S3a",
+        "S3b",
+        "S3c"
+      ],
+      "total_windows": 6812
+    },
+    "test": {
+      "session": "Sept 6, 2019 (Coventry Urban-Highway Loop)",
+      "drives": [
+        "S4"
+      ],
+      "total_windows": 9117
+    }
+  }
+}
