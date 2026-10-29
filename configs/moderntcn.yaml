@@ -1,0 +1,32 @@
+# ModernTCN Configuration
+model_name: "moderntcn"
+model_type: "ModernTCNModel"
+
+model:
+  in_channels: 6
+  model_dim: 128
+  num_blocks: 3
+  kernel_size: 17
+  expansion: 4
+  out_dim: 2
+  dropout: 0.1
+
+training:
+  batch_size: 128
+  epochs: 8
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  scheduler: "cosine"
+  min_lr: 0.000001
+  patience: 4
+  loss_fn: "huber"
+  huber_delta: 1.0
+  grad_clip: 1.0
+  seeds: [42, 123]
+
+data:
+  train_npz: "data/processed/train_windows.npz"
+  val_npz: "data/processed/val_windows.npz"
+  test_npz: "data/processed/test_windows.npz"
+  filter_valid_only: true
+  subsample_stride: 5

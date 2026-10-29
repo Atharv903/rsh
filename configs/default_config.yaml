@@ -1,0 +1,108 @@
+seed: 42
+
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  splits_dir: "data/splits"
+  reports_dir: "reports"
+  figures_dir: "figures"
+  primary_drive: "S-S1.csv"
+  all_drives:
+    - "S-S1.csv"
+    - "S-S2.csv"
+    - "S-S3a.csv"
+    - "S-S3b.csv"
+    - "S-S3c.csv"
+    - "S-S4.csv"
+
+sensors:
+  input_channels:
+    - "accel_x"
+    - "accel_y"
+    - "accel_z"
+    - "gyro_yaw"
+    - "gyro_pitch"
+    - "gyro_roll"
+  nominal_imu_rate_hz: 10.0
+  # Raw column mappings from S-S1.csv
+  raw_mapping:
+    timestamp_ms: "TIME SINCE START (ms)"
+    date_str: "DATE (YYYY-MO-DD HH-MI-SS_SSS)"
+    gps_lat: "GPS LATITUDE (degrees)"
+    gps_lon: "GPS LONGITUDE (degrees)"
+    gps_alt: "GPS ALTITUDE (m)"
+    gps_speed_kmh: "GPS SPEED (Kmh)"
+    gps_accuracy_m: "GPS ACCURACY (m)"
+    gps_orientation_deg: "GPS ORIENTATION (°)"
+    gps_satellites: "GPS SATELLITES IN RANGE"
+    accel_x: "ACCELEROMETER X (m/s²)"
+    accel_y: "ACCELEROMETER Y (m/s²)"
+    accel_z: "ACCELEROMETER Z (m/s²)"
+    gravity_x: "GRAVITY X (m/s²)"
+    gravity_y: "GRAVITY Y (m/s²)"
+    gravity_z: "GRAVITY Z (m/s²)"
+    gyro_yaw: "GYROSCOPE Yaw (rad/s)"
+    gyro_pitch: "GYROSCOPE Pitch (rad/s)"
+    gyro_roll: "GYROSCOPE Roll (rad/s)"
+    mag_x: "MAGNETIC FIELD X (μT)"
+    mag_y: "MAGNETIC FIELD Y (μT)"
+    mag_z: "MAGNETIC FIELD Z (μT)"
+    orient_yaw: "ORIENTATION (Yaw) (°)"
+    orient_pitch: "ORIENTATION (Pitch) (°)"
+    orient_roll: "ORIENTATION (Roll ) (°)"
+
+geodesy:
+  origin_mode: "first_valid_fix"
+  wgs84_a: 6378137.0
+  wgs84_f: 0.0033528106647474805 # 1 / 298.257223563
+
+synchronization:
+  interpolation_method: "linear"
+  max_gps_gap_seconds: 15.0
+  max_gps_accuracy_m: 20.0
+  min_gps_satellites: 4
+
+preprocessing:
+  missing_values:
+    strategy: "interpolate_small"
+    max_gap_samples: 5
+  outlier_clipping:
+    enabled: true
+    accel_limit_mps2: 30.0
+    gyro_limit_rads: 10.0
+  lowpass_filter:
+    enabled: false # Optional; set true to filter high-frequency noise
+    type: "butterworth"
+    order: 4
+    cutoff_hz: 3.5
+  gravity_removal:
+    enabled: false # Optional; set true to subtract phone gravity estimate
+    method: "device_estimate"
+  normalization:
+    enabled: true
+    method: "standard" # standard, robust, minmax, none
+
+outages:
+  durations_s:
+    - 10
+    - 30
+    - 60
+  min_reference_coverage: 1.0
+  max_scenarios_per_duration: 5
+
+windows:
+  window_size_samples: 100 # 10.0 seconds at 10 Hz
+  stride_samples: 10       # 1.0 second stride
+
+splitting:
+  single_drive_strategy: "smoke_test"
+  multi_drive:
+    train:
+      - "S-S1.csv"
+      - "S-S2.csv"
+      - "S-S4.csv"
+    val:
+      - "S-S3a.csv"
+    test:
+      - "S-S3b.csv"
+      - "S-S3c.csv"
