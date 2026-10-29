@@ -2,6 +2,8 @@
 Plot publication-quality training loss curves and validation MAE curves across all 9 models.
 """
 
+import sys
+import argparse
 import json
 from pathlib import Path
 import matplotlib.pyplot as plt
@@ -19,12 +21,27 @@ plt.rcParams.update({
 })
 
 
-def plot_curves():
-    ckpt_dir = Path("experiments/phase8_corrected_speed_models/checkpoints")
+def plot_curves(ckpt_dir_override=None):
+    candidates = [
+        Path(ckpt_dir_override) if ckpt_dir_override else None,
+        Path("/content/drive/MyDrive/GPS_Denied_Navigation_Research/checkpoints"),
+        Path("experiments/phase8_corrected_speed_models/checkpoints"),
+        Path("/content/checkpoints"),
+    ]
+    ckpt_dir = None
+    for cand in candidates:
+        if cand is not None and cand.exists():
+            ckpt_dir = cand
+            break
+            
+    if ckpt_dir is None:
+        print("[Warning] Checkpoints directory not found. Skipping loss curve plot.")
+        return
+        
     run_dirs = sorted([d for d in ckpt_dir.iterdir() if d.is_dir()])
     
     if not run_dirs:
-        print("No run directories found.")
+        print(f"No run directories found in {ckpt_dir}.")
         return
         
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
@@ -92,4 +109,7 @@ def plot_curves():
 
 
 if __name__ == "__main__":
-    plot_curves()
+    parser = argparse.ArgumentParser(description="Plot loss and validation curves")
+    parser.add_argument("--ckpt_dir", type=str, default=None)
+    args = parser.parse_args()
+    plot_curves(args.ckpt_dir)
