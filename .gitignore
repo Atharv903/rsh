@@ -2,3 +2,11 @@
 __pycache__/
 *.pyc
 *.zip
+*.bin
+*.pt
+**/*.pt
+checkpoints/
+data/raw/
+data/processed/*.npz
+data/processed/*.csv
+Synchronised V abd S datasets/

@@ -1,0 +1,26 @@
+# CNN-GRU Speed Model Configuration
+model_type: "CNNGRUModel"
+model:
+  in_channels: 6
+  conv_dims: [64, 128]
+  kernel_sizes: [7, 5]
+  gru_hidden_dim: 128
+  gru_num_layers: 2
+  out_dim: 1
+  dropout: 0.2
+
+training:
+  batch_size: 64
+  epochs: 12
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  patience: 4
+  scheduler: "cosine"
+  min_lr: 0.000001
+  subsample_stride: 2
+
+data:
+  train_npz: "data/processed/train_windows_grouped.npz"
+  val_npz: "data/processed/val_windows_grouped.npz"
+  test_npz: "data/processed/test_windows_grouped.npz"

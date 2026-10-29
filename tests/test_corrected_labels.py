@@ -74,9 +74,11 @@ def test_sliding_window_causality_and_bounds():
     # Verify causality: each window's end time matches its metadata
     for i, m in enumerate(meta):
         assert m["end_idx"] - m["start_idx"] == 100
-        # Window-average speed must match mean of window
+        # Endpoint speed must match speed at window final timestamp
+        inst_speed = df["ref_speed_mps"].iloc[m["end_idx"] - 1]
         win_speed = df["ref_speed_mps"].iloc[m["start_idx"]:m["end_idx"]].mean()
-        assert np.isclose(y_spd[i, 0], win_speed, atol=1e-4)
+        assert np.isclose(y_spd[i, 0], inst_speed, atol=1e-4)
+        assert np.isclose(m["avg_speed_mps"], win_speed, atol=1e-4)
 
 
 def test_corrected_dataset_npz_files_exist_and_valid():

@@ -1,0 +1,78 @@
+{
+  "split_type": "drive_level_partitioning",
+  "is_generalization_benchmark": true,
+  "leakage_prevention": "Windows are strictly contained within complete separate drives.",
+  "splits": {
+    "train": {
+      "drives": [
+        "S-S1.csv",
+        "S-S2.csv",
+        "S-S4.csv"
+      ],
+      "drive_count": 3,
+      "total_samples": 240222,
+      "total_windows": 23994
+    },
+    "val": {
+      "drives": [
+        "S-S3a.csv"
+      ],
+      "drive_count": 1,
+      "total_samples": 24621,
+      "total_windows": 2453
+    },
+    "test": {
+      "drives": [
+        "S-S3b.csv",
+        "S-S3c.csv"
+      ],
+      "drive_count": 2,
+      "total_samples": 43996,
+      "total_windows": 4381
+    }
+  },
+  "per_drive_details": {
+    "S-S1.csv": {
+      "total_samples": 51746,
+      "valid_samples": 51746,
+      "total_windows": 5165,
+      "duration_s": 5174.499,
+      "assigned_split": "train"
+    },
+    "S-S2.csv": {
+      "total_samples": 93876,
+      "valid_samples": 93876,
+      "total_windows": 9378,
+      "duration_s": 9201.099,
+      "assigned_split": "train"
+    },
+    "S-S4.csv": {
+      "total_samples": 94600,
+      "valid_samples": 94600,
+      "total_windows": 9451,
+      "duration_s": 354.78,
+      "assigned_split": "train"
+    },
+    "S-S3a.csv": {
+      "total_samples": 24621,
+      "valid_samples": 24621,
+      "total_windows": 2453,
+      "duration_s": 2462.0,
+      "assigned_split": "val"
+    },
+    "S-S3b.csv": {
+      "total_samples": 6813,
+      "valid_samples": 6813,
+      "total_windows": 672,
+      "duration_s": -2026.412,
+      "assigned_split": "test"
+    },
+    "S-S3c.csv": {
+      "total_samples": 37183,
+      "valid_samples": 37183,
+      "total_windows": 3709,
+      "duration_s": 3718.199,
+      "assigned_split": "test"
+    }
+  }
+}

@@ -117,7 +117,8 @@ def main():
     manifest = {
         "split_type": "grouped_session_isolated_partition",
         "description": "Zero-leakage partition grouping all fragments of a single journey into the same split.",
-        "primary_target": "scalar_forward_speed_mps",
+        "primary_target": "endpoint_instantaneous_speed_mps",
+        "primary_target_description": "Vehicle scalar forward speed in m/s at the final timestamp t of the causal 10-second IMU history window.",
         "splits": {
             "train": {
                 "session": "Sept 8, 2019 (Coventry-Warwickshire)",

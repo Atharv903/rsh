@@ -229,6 +229,8 @@ def generate_causal_sliding_windows(
             
         x_window = features[start_idx:end_idx]
         
+        # Endpoint instantaneous speed at timestamp t_end (window final sample)
+        inst_speed = float(speed[end_idx - 1])
         # Window-average speed (scalar distance / window duration)
         avg_speed = float(np.mean(speed[start_idx:end_idx]))
         
@@ -237,7 +239,7 @@ def generate_causal_sliding_windows(
         avg_vn = float(np.mean(vel_n[start_idx:end_idx]))
         
         x_list.append(x_window)
-        y_speed_list.append(np.array([avg_speed], dtype=np.float32))
+        y_speed_list.append(np.array([inst_speed], dtype=np.float32))
         y_vel_list.append(np.array([avg_ve, avg_vn], dtype=np.float32))
         meta_list.append({
             "segment_id": seg_id,
@@ -246,8 +248,10 @@ def generate_causal_sliding_windows(
             "end_idx": end_idx,
             "start_time_s": float(time_s[start_idx]),
             "end_time_s": float(time_s[end_idx - 1]),
+            "target_time_s": float(time_s[end_idx - 1]),
+            "target_type": "endpoint_instantaneous_speed_mps",
+            "instant_speed_mps": inst_speed,
             "avg_speed_mps": avg_speed,
-            "instant_speed_mps": float(speed[end_idx - 1]),
         })
         
     if not x_list:

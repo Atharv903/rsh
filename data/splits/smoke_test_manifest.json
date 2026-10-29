@@ -1,0 +1,61 @@
+{
+  "split_type": "single_drive_smoke_test",
+  "is_generalization_benchmark": false,
+  "status": "PIPELINE_SMOKE_TEST_ONLY",
+  "warning": "Row-level or window-level random splitting of a single inertial recording causes massive temporal autocorrelation leakage. This manifest is strictly for software pipeline verification and smoke testing.",
+  "drives": {
+    "train": [
+      "S-S1.csv"
+    ],
+    "val": [
+      "S-S1.csv"
+    ],
+    "test": [
+      "S-S1.csv"
+    ]
+  },
+  "drive_statistics": {
+    "S-S1.csv": {
+      "total_samples": 51746,
+      "valid_samples": 51746,
+      "total_windows": 5165,
+      "duration_s": 5174.499,
+      "assigned_split": "train"
+    },
+    "S-S2.csv": {
+      "total_samples": 93876,
+      "valid_samples": 93876,
+      "total_windows": 9378,
+      "duration_s": 9201.099,
+      "assigned_split": "train"
+    },
+    "S-S4.csv": {
+      "total_samples": 94600,
+      "valid_samples": 94600,
+      "total_windows": 9451,
+      "duration_s": 354.78,
+      "assigned_split": "train"
+    },
+    "S-S3a.csv": {
+      "total_samples": 24621,
+      "valid_samples": 24621,
+      "total_windows": 2453,
+      "duration_s": 2462.0,
+      "assigned_split": "val"
+    },
+    "S-S3b.csv": {
+      "total_samples": 6813,
+      "valid_samples": 6813,
+      "total_windows": 672,
+      "duration_s": -2026.412,
+      "assigned_split": "test"
+    },
+    "S-S3c.csv": {
+      "total_samples": 37183,
+      "valid_samples": 37183,
+      "total_windows": 3709,
+      "duration_s": 3718.199,
+      "assigned_split": "test"
+    }
+  }
+}
