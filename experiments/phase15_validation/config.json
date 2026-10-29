@@ -1,0 +1,34 @@
+{
+  "evaluation_phase": "Phase 15: State-of-the-Art Benchmarking & Speed Estimation Audit",
+  "evaluation_timestamp": "2026-10-30",
+  "reference_commit": "45230a3",
+  "num_scenarios": 30,
+  "protocols": {
+    "Protocol_A": "Zero-bias baseline (b_gyro = 0.0 rad/s, b_accel = 0.0 m/s^2)",
+    "Protocol_B": "Prior calibration from initial pre-departure stationary stop (frozen)",
+    "Protocol_C": "Causal online calibration from verified stationary stop prior to outage"
+  },
+  "prior_biases": {
+    "gyro_rads": {
+      "M": 0.003177,
+      "Y1": -0.00501
+    },
+    "accel_mps2": {
+      "M": 0.0241,
+      "Y1": -0.0185
+    }
+  },
+  "baselines_evaluated": [
+    "Constant-Velocity",
+    "Acceleration-Integration",
+    "ModernTCN",
+    "Phase14-Causal-Hybrid",
+    "Constrained-Causal-Hybrid",
+    "Complementary-Filter"
+  ],
+  "models": [
+    "moderntcnmodel_seed42",
+    "moderntcnmodel_seed123",
+    "moderntcnmodel_seed456"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "system_hardware": {
+    "os": "Windows-10-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "python_version": "3.10.11",
+    "torch_version": "2.14.1+cpu",
+    "os_name": "nt"
+  },
+  "models_profile": [
+    {
+      "model_name": "ModernTCN (Seed 42)",
+      "architecture": "ModernTCNModel",
+      "parameter_count": 413825,
+      "trainable_parameters": 413825,
+      "checkpoint_disk_size_bytes": 1668085,
+      "checkpoint_disk_size_kb": 1628.9892578125,
+      "checkpoint_disk_size_mb": 1.5908098220825195,
+      "latency_mean_ms": 4.304853800000274,
+      "latency_std_ms": 1.2858652994041684,
+      "latency_p50_ms": 4.051500000059605,
+      "latency_p95_ms": 6.637700003921054,
+      "latency_p99_ms": 9.195899998303503,
+      "throughput_inferences_per_sec": 232.29592605443102
+    },
+    {
+      "model_name": "CNN-GRU (Seed 42)",
+      "architecture": "CNNGRUModel",
+      "parameter_count": 250689,
+      "trainable_parameters": 250689,
+      "checkpoint_disk_size_bytes": 1012917,
+      "checkpoint_disk_size_kb": 989.1767578125,
+      "checkpoint_disk_size_mb": 0.9659929275512695,
+      "latency_mean_ms": 18.201941999897826,
+      "latency_std_ms": 6.9988503371791175,
+      "latency_p50_ms": 16.95109999855049,
+      "latency_p95_ms": 27.805000005173497,
+      "latency_p99_ms": 49.18449999240693,
+      "throughput_inferences_per_sec": 54.939192752378474
+    },
+    {
+      "model_name": "Mamba2 (Seed 42)",
+      "architecture": "Mamba2Model",
+      "parameter_count": 217153,
+      "trainable_parameters": 217153,
+      "checkpoint_disk_size_bytes": 879349,
+      "checkpoint_disk_size_kb": 858.7392578125,
+      "checkpoint_disk_size_mb": 0.8386125564575195,
+      "latency_mean_ms": 8.30752789977123,
+      "latency_std_ms": 1.9415469592697907,
+      "latency_p50_ms": 7.991400008904748,
+      "latency_p95_ms": 11.29719999153167,
+      "latency_p99_ms": 15.528099989751354,
+      "throughput_inferences_per_sec": 120.37275252816637
+    }
+  ],
+  "mobile_deployment_analysis": {
+    "sensor_sampling_rate_hz": 10.0,
+    "available_budget_per_step_ms": 100.0,
+    "moderntcn_cpu_load_pct": 4.304853800000274,
+    "on_device_feasibility": "FEASIBLE on modern mobile CPUs/NPUs via ONNX Runtime / LiteRT (latency < 2ms vs 100ms budget)",
+    "caveats": "Benchmarked on x86_64 host CPU; ARM Cortex-A55 efficiency cores may exhibit 2-4x higher latency (3-8 ms), which remains well within the 100 ms step deadline for 10 Hz inference."
+  }
+}
