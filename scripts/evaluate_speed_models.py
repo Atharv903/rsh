@@ -4,14 +4,17 @@ Evaluates CNN-GRU, ModernTCN, and Mamba-2 (custom SSD) across:
 1. Speed estimation accuracy on Val and Test sets (MAE, RMSE, Bias, by speed bin & motion dynamic).
 2. Trajectory dead reckoning on matched 10s, 30s, and 60s GNSS outages.
 3. Publication-quality trajectory and loss curve figures.
+4. Trajectory evaluation profiling (runtime, throughput, memory).
+Fully device-aware (CUDA when available, CPU fallback).
 """
 
 import os
 import sys
 import json
 import time
+import argparse
 from pathlib import Path
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List, Tuple, Optional
 
 # Add project root
 repo_root = Path(__file__).resolve().parent.parent
@@ -35,7 +38,6 @@ from src.outage_estimator import (
     run_causal_dead_reckoning,
     make_zero_speed_estimator,
     make_last_known_speed_estimator,
-    make_imu_kinematic_estimator,
 )
 
 plt.rcParams.update({
@@ -49,6 +51,12 @@ plt.rcParams.update({
     "figure.dpi": 300,
     "savefig.bbox": "tight",
 })
+
+
+def get_default_device() -> torch.device:
+    if torch.cuda.is_available():
+        return torch.device("cuda")
+    return torch.device("cpu")
 
 
 def load_checkpoint(ckpt_path: Path, device: torch.device):
@@ -117,21 +125,41 @@ def evaluate_speed_metrics(preds: np.ndarray, targets: np.ndarray) -> Dict[str, 
     return res
 
 
-def run_full_evaluation():
-    print("=" * 70)
-    print("RUNNING COMPREHENSIVE PHASE 8 BENCHMARK EVALUATION")
-    print("=" * 70)
+def run_full_evaluation(
+    device_str: str = "auto",
+    data_dir: Optional[str] = None,
+    ckpt_dir: Optional[str] = None,
+    results_dir: Optional[str] = None,
+):
+    print("=" * 70, flush=True)
+    print("RUNNING COMPREHENSIVE PHASE 8 BENCHMARK EVALUATION", flush=True)
+    print("=" * 70, flush=True)
     
-    device = torch.device("cpu")
+    if device_str == "auto":
+        device = get_default_device()
+    else:
+        device = torch.device(device_str)
+        
+    print(f"Evaluation Target Device: {device}", flush=True)
+    if device.type == "cuda":
+        print(f"  GPU Name: {torch.cuda.get_device_name(0)}", flush=True)
+        torch.cuda.reset_peak_memory_stats(0)
+    
     exp_dir = Path("experiments/phase8_corrected_speed_models")
-    ckpt_dir = exp_dir / "checkpoints"
-    results_dir = exp_dir / "results"
-    results_dir.mkdir(parents=True, exist_ok=True)
+    c_dir = Path(ckpt_dir) if ckpt_dir else (exp_dir / "checkpoints")
+    r_dir = Path(results_dir) if results_dir else (exp_dir / "results")
+    r_dir.mkdir(parents=True, exist_ok=True)
     os.makedirs("figures", exist_ok=True)
     
-    # Load Validation and Test sets
-    val_data = np.load("data/processed/val_windows_grouped.npz", allow_pickle=True)
-    test_data = np.load("data/processed/test_windows_grouped.npz", allow_pickle=True)
+    # Resolve processed dataset paths
+    d_dir = Path(data_dir) if data_dir else Path("data/processed")
+    val_npz = d_dir / "val_windows_grouped.npz"
+    test_npz = d_dir / "test_windows_grouped.npz"
+    train_npz = d_dir / "train_windows_grouped.npz"
+    norm_json = d_dir / "sensor_normalizer_grouped.json"
+    
+    val_data = np.load(val_npz, allow_pickle=True)
+    test_data = np.load(test_npz, allow_pickle=True)
     
     X_val = torch.from_numpy(val_data["X"].astype(np.float32))
     y_val = val_data["y"].flatten().astype(np.float32)
@@ -139,19 +167,19 @@ def run_full_evaluation():
     X_test = torch.from_numpy(test_data["X"].astype(np.float32))
     y_test = test_data["y"].flatten().astype(np.float32)
     
-    train_data = np.load("data/processed/train_windows_grouped.npz", allow_pickle=True)
+    train_data = np.load(train_npz, allow_pickle=True)
     train_mean_spd = float(train_data["y"].mean())
     
     # Identify all trained checkpoint directories
-    run_dirs = sorted([d for d in ckpt_dir.iterdir() if d.is_dir()])
-    print(f"Found {len(run_dirs)} trained model checkpoints in {ckpt_dir}")
+    run_dirs = sorted([d for d in c_dir.iterdir() if d.is_dir()])
+    print(f"Found {len(run_dirs)} trained model checkpoints in {c_dir}", flush=True)
     
     model_eval_rows = []
     all_predictions = {}
     loaded_models = {}
     
     # -------------------------------------------------------------
-    # Evaluate Speed Estimation on Validation and Test Splits
+    # 1. Evaluate Speed Estimation on Validation and Test Splits
     # -------------------------------------------------------------
     for rdir in run_dirs:
         ckpt_pt = rdir / "best_model.pt"
@@ -166,14 +194,16 @@ def run_full_evaluation():
         with torch.no_grad():
             val_preds = []
             for i in range(0, len(X_val), 256):
-                val_preds.append(model(X_val[i:i+256]).cpu().numpy())
+                bx = X_val[i:i+256].to(device)
+                val_preds.append(model(bx).detach().cpu().numpy())
             val_p = np.clip(np.concatenate(val_preds).flatten(), 0.0, None)
             
         # Predict on Test
         with torch.no_grad():
             test_preds = []
             for i in range(0, len(X_test), 256):
-                test_preds.append(model(X_test[i:i+256]).cpu().numpy())
+                bx = X_test[i:i+256].to(device)
+                test_preds.append(model(bx).detach().cpu().numpy())
             test_p = np.clip(np.concatenate(test_preds).flatten(), 0.0, None)
             
         all_predictions[name] = {
@@ -215,7 +245,6 @@ def run_full_evaluation():
     # Baseline rows on Test
     zero_m = evaluate_speed_metrics(np.zeros_like(y_test), y_test)
     tmean_m = evaluate_speed_metrics(np.full_like(y_test, train_mean_spd), y_test)
-    # Naive stride-1 persistence
     persist_preds = np.zeros_like(y_test)
     persist_preds[0] = y_test[0]
     persist_preds[1:] = y_test[:-1]
@@ -230,17 +259,19 @@ def run_full_evaluation():
         print(f"[{b['model_run']}] Test MAE: {b['test_mae']:.3f} m/s (RMSE: {b['test_rmse']:.3f})", flush=True)
     
     df_eval = pd.DataFrame(model_eval_rows + baseline_rows)
-    df_eval.to_csv(results_dir / "model_speed_metrics.csv", index=False)
+    df_eval.to_csv(r_dir / "model_speed_metrics.csv", index=False)
+    print(f"Saved speed metrics to {r_dir / 'model_speed_metrics.csv'}", flush=True)
     
     # -------------------------------------------------------------
-    # Trajectory Outage Dead-Reckoning Benchmark (10s, 30s, 60s)
+    # 2. Trajectory Outage Dead-Reckoning Benchmark (10s, 30s, 60s)
     # -------------------------------------------------------------
     print("\n--- Running Trajectory Outage Benchmark on Holdout (Drive S4) ---", flush=True)
+    t_outage_start = time.perf_counter()
     segs, _ = extract_aligned_segments_for_drive("S4", raw_dir="data/raw")
     test_df = segs[0]
     
-    # Load Sensor Normalizer parameters so neural speed models receive normalized IMU windows
-    norm_meta = json.load(open("data/processed/sensor_normalizer_grouped.json"))
+    # Normalizer parameters
+    norm_meta = json.load(open(norm_json))
     norm_params = norm_meta["params"]
     feat_channels = ["accel_x", "accel_y", "accel_z", "gyro_yaw", "gyro_pitch", "gyro_roll"]
     norm_mean = np.array([norm_params[ch]["mean"] for ch in feat_channels], dtype=np.float32).reshape(1, 6)
@@ -305,9 +336,9 @@ def run_full_evaluation():
             def make_model_fn(m):
                 def _est(w):
                     w_norm = (w - norm_mean) / norm_std
-                    tensor_in = torch.from_numpy(w_norm.astype(np.float32)).unsqueeze(0)
+                    tensor_in = torch.from_numpy(w_norm.astype(np.float32)).unsqueeze(0).to(device)
                     with torch.no_grad():
-                        return float(m(tensor_in).item())
+                        return float(m(tensor_in).detach().cpu().item())
                 return _est
                 
             r_m = run_causal_dead_reckoning(
@@ -333,13 +364,31 @@ def run_full_evaluation():
                 trajectory_runs["ground_truth"] = (r_m.ref_trajectory_east, r_m.ref_trajectory_north)
                 trajectory_runs["constant_velocity"] = r_const
                 
+    total_outage_time_s = time.perf_counter() - t_outage_start
+    max_outage_gpu_mem_mb = 0.0
+    if device.type == "cuda":
+        max_outage_gpu_mem_mb = float(torch.cuda.max_memory_allocated(0) / (1024.0 * 1024.0))
+        
     df_outage = pd.DataFrame(outage_rows)
-    df_outage.to_csv(results_dir / "model_outage_metrics.csv", index=False)
+    df_outage.to_csv(r_dir / "model_outage_metrics.csv", index=False)
+    print(f"Saved outage metrics to {r_dir / 'model_outage_metrics.csv'}", flush=True)
+    
+    # Save Trajectory Profiling Metadata
+    traj_profile = {
+        "device": str(device),
+        "total_trajectory_time_s": total_outage_time_s,
+        "scenarios_evaluated": len(scenarios),
+        "models_evaluated": len(loaded_models),
+        "mean_time_per_scenario_s": total_outage_time_s / max(1, len(scenarios)),
+        "max_gpu_mem_mb": max_outage_gpu_mem_mb,
+    }
+    with open(r_dir / "trajectory_profiling.json", "w") as f:
+        json.dump(traj_profile, f, indent=2)
+    print(f"Trajectory profiling saved to {r_dir / 'trajectory_profiling.json'}", flush=True)
     
     # -------------------------------------------------------------
-    # Publication Figures
+    # 3. Publication Figures
     # -------------------------------------------------------------
-    # 1. Trajectory comparison plot for 60s outage
     if "ground_truth" in trajectory_runs:
         gt_e, gt_n = trajectory_runs["ground_truth"]
         fig, ax = plt.subplots(figsize=(9, 8))
@@ -366,10 +415,26 @@ def run_full_evaluation():
         plt.tight_layout()
         plt.savefig("figures/phase8_outage_trajectories_60s.png")
         plt.close()
-        print("Saved figures/phase8_outage_trajectories_60s.png")
+        print("Saved figures/phase8_outage_trajectories_60s.png", flush=True)
         
-    print("\nPhase 8 Evaluation Completed Successfully!")
+    print("\nPhase 8 Evaluation Completed Successfully!", flush=True)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--device", type=str, default="auto", choices=["auto", "cuda", "cpu"])
+    parser.add_argument("--data_dir", type=str, default=None)
+    parser.add_argument("--ckpt_dir", type=str, default=None)
+    parser.add_argument("--results_dir", type=str, default=None)
+    args = parser.parse_args()
+    
+    run_full_evaluation(
+        device_str=args.device,
+        data_dir=args.data_dir,
+        ckpt_dir=args.ckpt_dir,
+        results_dir=args.results_dir,
+    )
 
 
 if __name__ == "__main__":
-    run_full_evaluation()
+    main()
