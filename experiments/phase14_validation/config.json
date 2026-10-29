@@ -1,0 +1,32 @@
+{
+  "evaluation_timestamp": "2026-10-30",
+  "num_scenarios": 30,
+  "protocols": {
+    "Protocol_A": "Zero-bias baseline (b = 0.0)",
+    "Protocol_B": "Prior calibration from initial stationary stop at trip start (frozen)",
+    "Protocol_C": "Causal online calibration from verified stationary stop prior to outage"
+  },
+  "prior_calibration_values": {
+    "M": 0.003177,
+    "Y1": -0.00501
+  },
+  "hybrid_parameters": {
+    "existing": {
+      "t_switch_s": 10.0,
+      "tau_s": 2.0,
+      "braking_filter": "instantaneous_1sample",
+      "thr": -1.5
+    },
+    "corrected_causal": {
+      "t_switch_s": 10.0,
+      "tau_s": 2.0,
+      "braking_filter": "causal_rolling_5sample_0.5s",
+      "thr": -1.5
+    }
+  },
+  "models": [
+    "moderntcnmodel_seed42",
+    "moderntcnmodel_seed123",
+    "moderntcnmodel_seed456"
+  ]
+}
