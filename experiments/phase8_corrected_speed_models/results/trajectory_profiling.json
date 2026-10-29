@@ -1,0 +1,8 @@
+{
+  "device": "cuda",
+  "total_trajectory_time_s": 13.526341381000066,
+  "scenarios_evaluated": 3,
+  "models_evaluated": 9,
+  "mean_time_per_scenario_s": 4.508780460333355,
+  "max_gpu_mem_mb": 483.03466796875
+}
