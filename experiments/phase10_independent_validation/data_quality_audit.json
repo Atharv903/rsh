@@ -1,0 +1,177 @@
+{
+  "drive_id": "M",
+  "s_path": "Synchronised V abd S datasets/Synchronised V abd S datasets/Categorised IOVNB Dataset/M (Driver B)\\S-M.csv",
+  "v_path": "Synchronised V abd S datasets/Synchronised V abd S datasets/Categorised IOVNB Dataset/M (Driver B)\\V-M.csv",
+  "s_total_rows": 105974,
+  "v_total_rows": 105974,
+  "s_columns": [
+    "GPS LATITUDE (degrees)",
+    "GPS LONGITUDE (degrees)",
+    "GPS ALTITUDE (m)",
+    "GPS SPEED (Kmh)",
+    "GPS ACCURACY (m)",
+    "GPS ORIENTATION (\u00b0)",
+    "GPS SATELLITES IN RANGE",
+    "TIME SINCE START (ms)",
+    "DATE (YYYY-MO-DD HH-MI-SS_SSS)",
+    "ACCELEROMETER X (m/s\u00b2)",
+    "ACCELEROMETER Y (m/s\u00b2)",
+    "ACCELEROMETER Z (m/s\u00b2)",
+    "GRAVITY X (m/s\u00b2)",
+    "GRAVITY Y (m/s\u00b2)",
+    "GRAVITY Z (m/s\u00b2)",
+    "GYROSCOPE Yaw (rad/s)",
+    "GYROSCOPE Pitch (rad/s)",
+    "GYROSCOPE Roll (rad/s)",
+    "MAGNETIC FIELD X (\u03bcT)",
+    "MAGNETIC FIELD Y (\u03bcT)",
+    "MAGNETIC FIELD Z (\u03bcT)",
+    "ORIENTATION (Yaw) (\u00b0)",
+    "ORIENTATION (Pitch) (\u00b0)",
+    "ORIENTATION (Roll ) (\u00b0)"
+  ],
+  "v_columns": [
+    "No of GPS Satellites Available",
+    "Time Since Start of Day (seconds)",
+    "Latitude (degrees)",
+    "Longitude (degrees)",
+    "Velocity (km/hr)",
+    "Heading (degrees)",
+    "Height (km)",
+    "Vertical velocity (km/hr)",
+    "Sample period (seconds)",
+    "Steering Angle (degrees)",
+    "Wheel Speed Front Left (rad/sec)",
+    "Wheel Speed Front Right (rad/sec)",
+    "Wheel Speed Rear Left (rad/sec)",
+    "Wheel Speed Rear Right (rad/sec)",
+    "Yaw Rate (deg/sec)",
+    "Indicated Vehicle Speed (km/hr)",
+    "Indicated Longitudinal Acceleration (g)",
+    "Indicated Lateral Acceleration (g)",
+    "Handbrake (0 or 1)",
+    "Gear Requested (Number fof gear employed 1-5)",
+    "Gear (Number fof gear employed 1-5)",
+    "Engine Speed (rev/min)",
+    "Coolant Temperature (degrees)",
+    "Clutch Position (0 or 1)",
+    "Brake Pressure (psi)",
+    "Brake Position (0 or 1)",
+    "Battery Voltage (volts)",
+    "Air Temperature (degrees)",
+    "Accelerator Pedal Position (0 or 1)"
+  ],
+  "s_null_counts": {},
+  "v_null_counts": {},
+  "phone_clock": {
+    "min_dt_ms": -4426717.0,
+    "max_dt_ms": 1365.0,
+    "median_dt_ms": 100.0,
+    "mean_dt_ms": 58.238872165551605,
+    "clock_resets_count": 1,
+    "clock_reset_indices": [
+      44225
+    ],
+    "zero_dt_count": 0,
+    "gaps_gt_200ms_count": 1
+  },
+  "vehicle_clock": {
+    "min_dt_s": 0.0,
+    "max_dt_s": 0.19999999999708962,
+    "median_dt_s": 0.09999999999854481,
+    "mean_dt_s": 0.09999999999999996,
+    "clock_resets_count": 0,
+    "gaps_gt_200ms_count": 0
+  },
+  "timestamps": {
+    "start_utc": "2019-09-07 09:13:29:506",
+    "end_utc": "2019-09-07 12:10:09:129",
+    "duration_hours": 2.9437222222222226
+  },
+  "mounting_orientation": {
+    "mean_gravity_x_mps2": -0.0001495951837243097,
+    "mean_gravity_y_mps2": -0.00022312737086455176,
+    "mean_gravity_z_mps2": 9.806492526468757,
+    "mean_gravity_norm_mps2": 9.806492530148184,
+    "dominant_axis": "Z",
+    "interpretation": "Phone lying flat on horizontal surface facing upwards"
+  },
+  "segmented_alignment": {
+    "num_valid_segments": 2,
+    "segments_info": [
+      {
+        "segment_id": "M_seg0",
+        "drive_id": "M",
+        "status": "VALID_SYNCHRONIZED",
+        "phone_rows": [
+          0,
+          44226
+        ],
+        "veh_rows": [
+          11,
+          44237
+        ],
+        "num_samples": 44226,
+        "offset_s": 1.1059999999997672,
+        "shift_samples": 11,
+        "mean_speed_mps": 8.746171951293945,
+        "max_speed_mps": 26.19611167907715
+      },
+      {
+        "segment_id": "M_seg1",
+        "drive_id": "M",
+        "status": "VALID_SYNCHRONIZED",
+        "phone_rows": [
+          44226,
+          105940
+        ],
+        "veh_rows": [
+          44260,
+          105974
+        ],
+        "num_samples": 61714,
+        "offset_s": 3.4290000000037253,
+        "shift_samples": 34,
+        "mean_speed_mps": 10.76263427734375,
+        "max_speed_mps": 27.968891143798828
+      }
+    ],
+    "origin_enu": {
+      "lat0": 52.4025641,
+      "lon0": -1.5034825,
+      "alt0": 98.03
+    }
+  },
+  "signal_correlations": [
+    {
+      "segment_id": "M_seg0",
+      "num_samples": 44226,
+      "corr_accel_x_v_accel": 0.11658349484472308,
+      "corr_accel_y_v_accel": -0.14528423685401512,
+      "corr_accel_z_v_accel": 0.04421372371753545,
+      "corr_gyro_yaw_v_yaw_rate": 0.06904780693011024,
+      "corr_gyro_pitch_v_yaw_rate": 0.855592632166856,
+      "corr_gyro_roll_v_yaw_rate": -0.16635365037150246,
+      "corr_gyro_pitch_heading_rate": -0.3740238053188095,
+      "gyro_pitch_bias_stationary": -0.00139999995008111,
+      "speed_min_mps": 0.0,
+      "speed_max_mps": 26.19611167907715,
+      "speed_mean_mps": 8.746171951293945
+    },
+    {
+      "segment_id": "M_seg1",
+      "num_samples": 61714,
+      "corr_accel_x_v_accel": 0.26121291855267764,
+      "corr_accel_y_v_accel": -0.0763921628240382,
+      "corr_accel_z_v_accel": 0.03442883123330995,
+      "corr_gyro_yaw_v_yaw_rate": 0.2493474328226013,
+      "corr_gyro_pitch_v_yaw_rate": 0.8811051467926873,
+      "corr_gyro_roll_v_yaw_rate": -0.4200715209308872,
+      "corr_gyro_pitch_heading_rate": -0.694608418607974,
+      "gyro_pitch_bias_stationary": 0.004800000227987766,
+      "speed_min_mps": 0.0,
+      "speed_max_mps": 27.968891143798828,
+      "speed_mean_mps": 10.76263427734375
+    }
+  ]
+}
