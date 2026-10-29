@@ -1,0 +1,109 @@
+{
+  "timestamp": "2026-10-29",
+  "git": {
+    "commit": "f2ec134d55c58486aa19e40f95076f92fc26b5f5",
+    "branch": "main",
+    "dirty": true,
+    "status": "?? experiments/phase13/"
+  },
+  "checkpoints": {
+    "experiments/phase8_corrected_speed_models/checkpoints/cnngrumodel_seed123/best_model.pt": {
+      "size_bytes": 1012917,
+      "sha256": "7f9619cfdc27ef13b6dac174ebe17f0f16cdab433bec8eaa89c94731e88c1bb3"
+    },
+    "experiments/phase8_corrected_speed_models/checkpoints/cnngrumodel_seed42/best_model.pt": {
+      "size_bytes": 1012917,
+      "sha256": "4317b03f9b777176fa450e0a4a74cdc46ec75fac4084ea1ccc1d3eeecef8c18b"
+    },
+    "experiments/phase8_corrected_speed_models/checkpoints/cnngrumodel_seed456/best_model.pt": {
+      "size_bytes": 1012917,
+      "sha256": "dcaa65435df26797096bca28a7c59be52c9b9fd00a1ca98e05f039299976da33"
+    },
+    "experiments/phase8_corrected_speed_models/checkpoints/mamba2model_seed123/best_model.pt": {
+      "size_bytes": 879349,
+      "sha256": "527f3acb42fec0be38a9551dda17644a0bb463089567efe37ab09eb8ef27250f"
+    },
+    "experiments/phase8_corrected_speed_models/checkpoints/mamba2model_seed42/best_model.pt": {
+      "size_bytes": 879349,
+      "sha256": "1aa910b8e7aed9dd5c5d94e73d2a5d294d94443fd98497493cb34ade03d2ed25"
+    },
+    "experiments/phase8_corrected_speed_models/checkpoints/mamba2model_seed456/best_model.pt": {
+      "size_bytes": 879349,
+      "sha256": "499fe36faf843ee7e8cf19f4c4386130ad3db2aa4ac6e4c6679a0b2a5ca2dcb5"
+    },
+    "experiments/phase8_corrected_speed_models/checkpoints/moderntcnmodel_seed123/best_model.pt": {
+      "size_bytes": 1668085,
+      "sha256": "dca5104e8fea29cb649e69c38521a9a3d6b0fcd2f914086f26a1edcb1ca23584"
+    },
+    "experiments/phase8_corrected_speed_models/checkpoints/moderntcnmodel_seed42/best_model.pt": {
+      "size_bytes": 1668085,
+      "sha256": "b0c5e4a1c5739a54f7ef608f2565ff18719f3074db3bb59ef1ec8131e67a2c4c"
+    },
+    "experiments/phase8_corrected_speed_models/checkpoints/moderntcnmodel_seed456/best_model.pt": {
+      "size_bytes": 1668085,
+      "sha256": "eaa7bb9a3eb545788ce99b421c05790e440a94d8fbe7fa55341920d57dde034e"
+    }
+  },
+  "configurations_and_manifests": {
+    "experiments/phase12_validation/phase12_scenarios.json": {
+      "size_bytes": 13192,
+      "sha256": "8f576c79e2a4ddf68662f7795db69bffc44baa74434c5d981fa613e942e5eef2"
+    },
+    "experiments/phase12_validation/experiment_config.json": {
+      "size_bytes": 1313,
+      "sha256": "5af1551e29d95b0f994953e8e5824079270ac4b9507b177e9b9594f82d6fbace"
+    },
+    "experiments/phase12_validation/candidate_sessions_audit.json": {
+      "size_bytes": 7837,
+      "sha256": "37958f51d38134ec4dec9d4a9ab92b1ca34576cb0b835116cbe107ded626391c"
+    },
+    "experiments/phase12_validation/data_quality_audit.json": {
+      "size_bytes": 1606,
+      "sha256": "d298a1104d75eb1e485dff7de7d8a3003c6532c6614b5830dee32677aa9a090f"
+    }
+  },
+  "evaluation_scripts": {
+    "src/outage_estimator.py": {
+      "size_bytes": 9042,
+      "sha256": "3deefd009d16758e699a8b8a9f624feee31d1e7c3523aa8e6053dbed848802ec"
+    },
+    "scripts/evaluate_phase12_expanded.py": {
+      "size_bytes": 17365,
+      "sha256": "f1cf6399b27daa748d105574810bff843c865625e3c8ecfe0cc78b89901d8056"
+    },
+    "scripts/audit_candidate_sessions_phase12.py": {
+      "size_bytes": 5380,
+      "sha256": "f78791816b9b9601c1953bfb7a5179cbc9c0fe4ee2324a624c705b05487b58b7"
+    },
+    "scripts/plot_phase12_figures.py": {
+      "size_bytes": 4474,
+      "sha256": "227283a125cff9f06b54917d353da001ec2371df99ce0352330abb3e9825fdf1"
+    },
+    "tests/test_navigation_heading.py": {
+      "size_bytes": 7604,
+      "sha256": "f1833bcf7d3998d524f9b18ff820215d3eb210b01b47d45f135b0030f7fa0139"
+    },
+    "scripts/evaluate_phase10_independent.py": {
+      "size_bytes": 11369,
+      "sha256": "32e65ae5d98bc21f2deb3b4737315714b28a4bf61bdcc57fd2df1a6e2f2f244d"
+    }
+  },
+  "phase12_artifacts": {
+    "experiments/phase12_validation/per_scenario_metrics.csv": {
+      "size_bytes": 123394,
+      "sha256": "dc569d3ef933b21a9f047e69cbe671f2173f7da7537d576a6781a432e715b09e"
+    },
+    "experiments/phase12_validation/per_session_summary.csv": {
+      "size_bytes": 5762,
+      "sha256": "b2787f794ae5d4f7ba05efb5d786326ab38041b8fe658a20ea2cfebe5353a5c9"
+    },
+    "experiments/phase12_validation/statistical_comparison.csv": {
+      "size_bytes": 6710,
+      "sha256": "6827b83ff73777e90129d515fab5bad9b6925fb9b8aa545b21a35e141b9bf1ea"
+    },
+    "reports/phase12_navigation_correction_and_validation.md": {
+      "size_bytes": 16416,
+      "sha256": "216f3ba0058e6c2ec1f6660065c3d872f4c270f00b1ccbcb8f1543d4ee3e304f"
+    }
+  }
+}
