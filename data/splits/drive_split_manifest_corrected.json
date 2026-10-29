@@ -1,0 +1,274 @@
+{
+  "split_type": "corrected_drive_level_session_partition",
+  "description": "Segment-aware UTC synchronized dataset with verified continuous vehicle telemetry reference.",
+  "primary_target": "scalar_forward_speed_mps",
+  "secondary_target": "horizontal_velocity_enu_mps",
+  "window_size_samples": 100,
+  "stride_samples": 10,
+  "sample_rate_hz": 10.0,
+  "splits": {
+    "train": {
+      "drives": [
+        "S1",
+        "S2",
+        "S4"
+      ],
+      "total_windows": 23642
+    },
+    "val": {
+      "drives": [
+        "S3a"
+      ],
+      "total_windows": 2446
+    },
+    "test": {
+      "drives": [
+        "S3b",
+        "S3c"
+      ],
+      "total_windows": 4366
+    }
+  },
+  "drive_sync_metadata": {
+    "S1": {
+      "drive_id": "S1",
+      "origin_enu": {
+        "lat0": 52.4017192,
+        "lon0": -1.5053331,
+        "alt0": 110.19
+      },
+      "segments": [
+        {
+          "segment_id": "S1_seg0",
+          "drive_id": "S1",
+          "status": "VALID_SYNCHRONIZED",
+          "phone_rows": [
+            0,
+            51741
+          ],
+          "veh_rows": [
+            5,
+            51746
+          ],
+          "num_samples": 51741,
+          "offset_s": 0.5450000000055297,
+          "shift_samples": 5,
+          "mean_speed_mps": 7.333771705627441,
+          "max_speed_mps": 26.065000534057617
+        }
+      ]
+    },
+    "S2": {
+      "drive_id": "S2",
+      "origin_enu": {
+        "lat0": 52.4031372,
+        "lon0": -1.557977,
+        "alt0": 114.07
+      },
+      "segments": [
+        {
+          "segment_id": "S2_seg0",
+          "drive_id": "S2",
+          "status": "VALID_SYNCHRONIZED",
+          "phone_rows": [
+            0,
+            1864
+          ],
+          "veh_rows": [
+            73,
+            1937
+          ],
+          "num_samples": 1864,
+          "offset_s": 7.341000000000349,
+          "shift_samples": 73,
+          "mean_speed_mps": 2.6310510635375977,
+          "max_speed_mps": 12.623888969421387
+        },
+        {
+          "segment_id": "S2_seg1",
+          "drive_id": "S2",
+          "status": "VALID_SYNCHRONIZED",
+          "phone_rows": [
+            1864,
+            93792
+          ],
+          "veh_rows": [
+            1948,
+            93876
+          ],
+          "num_samples": 91928,
+          "offset_s": 8.449000000000524,
+          "shift_samples": 84,
+          "mean_speed_mps": 8.154747009277344,
+          "max_speed_mps": 29.22888946533203
+        }
+      ]
+    },
+    "S3a": {
+      "drive_id": "S3a",
+      "origin_enu": {
+        "lat0": 52.4048835,
+        "lon0": -1.5002890999999998,
+        "alt0": 109.45
+      },
+      "segments": [
+        {
+          "segment_id": "S3a_seg0",
+          "drive_id": "S3a",
+          "status": "VALID_SYNCHRONIZED",
+          "phone_rows": [
+            65,
+            24621
+          ],
+          "veh_rows": [
+            0,
+            24556
+          ],
+          "num_samples": 24556,
+          "offset_s": -6.506999999997788,
+          "shift_samples": -65,
+          "mean_speed_mps": 10.538239479064941,
+          "max_speed_mps": 27.226943969726562
+        }
+      ]
+    },
+    "S3b": {
+      "drive_id": "S3b",
+      "origin_enu": {
+        "lat0": 52.3704618,
+        "lon0": -1.2544278,
+        "alt0": 125.7
+      },
+      "segments": [
+        {
+          "segment_id": "S3b_seg0",
+          "drive_id": "S3b",
+          "status": "VALID_SYNCHRONIZED",
+          "phone_rows": [
+            0,
+            2043
+          ],
+          "veh_rows": [
+            7,
+            2050
+          ],
+          "num_samples": 2043,
+          "offset_s": 0.6929999999993015,
+          "shift_samples": 7,
+          "mean_speed_mps": 5.448995590209961,
+          "max_speed_mps": 12.388055801391602
+        },
+        {
+          "segment_id": "S3b_seg1",
+          "drive_id": "S3b",
+          "status": "VALID_SYNCHRONIZED",
+          "phone_rows": [
+            2043,
+            6763
+          ],
+          "veh_rows": [
+            2093,
+            6813
+          ],
+          "num_samples": 4720,
+          "offset_s": 5.020999999993364,
+          "shift_samples": 50,
+          "mean_speed_mps": 5.60551118850708,
+          "max_speed_mps": 12.426112174987793
+        }
+      ]
+    },
+    "S3c": {
+      "drive_id": "S3c",
+      "origin_enu": {
+        "lat0": 52.3794122,
+        "lon0": -1.2617807,
+        "alt0": 101.13
+      },
+      "segments": [
+        {
+          "segment_id": "S3c_seg0",
+          "drive_id": "S3c",
+          "status": "VALID_SYNCHRONIZED",
+          "phone_rows": [
+            0,
+            37176
+          ],
+          "veh_rows": [
+            7,
+            37183
+          ],
+          "num_samples": 37176,
+          "offset_s": 0.7209999999904539,
+          "shift_samples": 7,
+          "mean_speed_mps": 11.752938270568848,
+          "max_speed_mps": 32.53388977050781
+        }
+      ]
+    },
+    "S4": {
+      "drive_id": "S4",
+      "origin_enu": {
+        "lat0": 52.40245660000001,
+        "lon0": -1.5053917999999995,
+        "alt0": 134.93
+      },
+      "segments": [
+        {
+          "segment_id": "S4_seg0",
+          "drive_id": "S4",
+          "status": "VALID_SYNCHRONIZED",
+          "phone_rows": [
+            0,
+            35186
+          ],
+          "veh_rows": [
+            17,
+            35203
+          ],
+          "num_samples": 35186,
+          "offset_s": 1.7109999999956926,
+          "shift_samples": 17,
+          "mean_speed_mps": 7.905233860015869,
+          "max_speed_mps": 17.968891143798828
+        },
+        {
+          "segment_id": "S4_seg1",
+          "drive_id": "S4",
+          "status": "VALID_SYNCHRONIZED",
+          "phone_rows": [
+            35186,
+            90967
+          ],
+          "veh_rows": [
+            38324,
+            94105
+          ],
+          "num_samples": 55781,
+          "offset_s": 313.752999999997,
+          "shift_samples": 3138,
+          "mean_speed_mps": 10.769790649414062,
+          "max_speed_mps": 30.45305633544922
+        },
+        {
+          "segment_id": "S4_seg2",
+          "drive_id": "S4",
+          "status": "VALID_SYNCHRONIZED",
+          "phone_rows": [
+            90967,
+            91451
+          ],
+          "veh_rows": [
+            94116,
+            94600
+          ],
+          "num_samples": 484,
+          "offset_s": 314.9170000000013,
+          "shift_samples": 3149,
+          "mean_speed_mps": 10.700000762939453,
+          "max_speed_mps": 17.775001525878906
+        }
+      ]
+    }
+  }
+}

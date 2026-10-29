@@ -1,0 +1,7 @@
+Drive,Phone Rows,Vehicle Rows,Rows Match,Duration (s),Phone IMU Mean dt (ms),Phone IMU Median dt (ms),Phone IMU Resets,Phone GPS Fixes,Phone GPS Mean Inter-Fix (s),Phone GPS Median Inter-Fix (s),Phone GPS Effective Rate (Hz),Vehicle dt Mean (s),Vehicle Strictly Monotonic,Vehicle Max Speed (km/h),Vehicle Mean Speed (km/h)
+S1,51746,51746,True,5174.5,100.0,100.0,0,532,9.73,9.0,0.103,0.1,True,93.8,26.4
+S2,93876,93876,True,9387.5,98.01,100.0,1,941,9.97,9.0,0.1,0.1,True,105.2,28.9
+S3a,24621,24621,True,2462.0,100.0,100.0,0,254,9.7,9.0,0.103,0.1,True,98.0,37.9
+S3b,6813,6813,True,681.2,-297.48,100.0,1,74,9.32,9.0,0.109,0.1,True,44.7,19.9
+S3c,37183,37183,True,3718.2,100.0,100.0,0,391,9.51,9.0,0.105,0.1,True,117.1,42.3
+S4,94600,94600,True,9459.9,3.75,100.0,2,932,10.16,9.0,0.099,0.1,True,109.6,33.7

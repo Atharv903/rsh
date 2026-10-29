@@ -1,0 +1,417 @@
+{
+  "summary": [
+    {
+      "Drive": "S1",
+      "Phone Rows": 51746,
+      "Vehicle Rows": 51746,
+      "Rows Match": true,
+      "Duration (s)": 5174.5,
+      "Phone IMU Mean dt (ms)": 100.0,
+      "Phone IMU Median dt (ms)": 100.0,
+      "Phone IMU Resets": 0,
+      "Phone GPS Fixes": 532,
+      "Phone GPS Mean Inter-Fix (s)": 9.73,
+      "Phone GPS Median Inter-Fix (s)": 9.0,
+      "Phone GPS Effective Rate (Hz)": 0.103,
+      "Vehicle dt Mean (s)": 0.1,
+      "Vehicle Strictly Monotonic": true,
+      "Vehicle Max Speed (km/h)": 93.8,
+      "Vehicle Mean Speed (km/h)": 26.4
+    },
+    {
+      "Drive": "S2",
+      "Phone Rows": 93876,
+      "Vehicle Rows": 93876,
+      "Rows Match": true,
+      "Duration (s)": 9387.5,
+      "Phone IMU Mean dt (ms)": 98.01,
+      "Phone IMU Median dt (ms)": 100.0,
+      "Phone IMU Resets": 1,
+      "Phone GPS Fixes": 941,
+      "Phone GPS Mean Inter-Fix (s)": 9.97,
+      "Phone GPS Median Inter-Fix (s)": 9.0,
+      "Phone GPS Effective Rate (Hz)": 0.1,
+      "Vehicle dt Mean (s)": 0.1,
+      "Vehicle Strictly Monotonic": true,
+      "Vehicle Max Speed (km/h)": 105.2,
+      "Vehicle Mean Speed (km/h)": 28.9
+    },
+    {
+      "Drive": "S3a",
+      "Phone Rows": 24621,
+      "Vehicle Rows": 24621,
+      "Rows Match": true,
+      "Duration (s)": 2462.0,
+      "Phone IMU Mean dt (ms)": 100.0,
+      "Phone IMU Median dt (ms)": 100.0,
+      "Phone IMU Resets": 0,
+      "Phone GPS Fixes": 254,
+      "Phone GPS Mean Inter-Fix (s)": 9.7,
+      "Phone GPS Median Inter-Fix (s)": 9.0,
+      "Phone GPS Effective Rate (Hz)": 0.103,
+      "Vehicle dt Mean (s)": 0.1,
+      "Vehicle Strictly Monotonic": true,
+      "Vehicle Max Speed (km/h)": 98.0,
+      "Vehicle Mean Speed (km/h)": 37.9
+    },
+    {
+      "Drive": "S3b",
+      "Phone Rows": 6813,
+      "Vehicle Rows": 6813,
+      "Rows Match": true,
+      "Duration (s)": 681.2,
+      "Phone IMU Mean dt (ms)": -297.48,
+      "Phone IMU Median dt (ms)": 100.0,
+      "Phone IMU Resets": 1,
+      "Phone GPS Fixes": 74,
+      "Phone GPS Mean Inter-Fix (s)": 9.32,
+      "Phone GPS Median Inter-Fix (s)": 9.0,
+      "Phone GPS Effective Rate (Hz)": 0.109,
+      "Vehicle dt Mean (s)": 0.1,
+      "Vehicle Strictly Monotonic": true,
+      "Vehicle Max Speed (km/h)": 44.7,
+      "Vehicle Mean Speed (km/h)": 19.9
+    },
+    {
+      "Drive": "S3c",
+      "Phone Rows": 37183,
+      "Vehicle Rows": 37183,
+      "Rows Match": true,
+      "Duration (s)": 3718.2,
+      "Phone IMU Mean dt (ms)": 100.0,
+      "Phone IMU Median dt (ms)": 100.0,
+      "Phone IMU Resets": 0,
+      "Phone GPS Fixes": 391,
+      "Phone GPS Mean Inter-Fix (s)": 9.51,
+      "Phone GPS Median Inter-Fix (s)": 9.0,
+      "Phone GPS Effective Rate (Hz)": 0.105,
+      "Vehicle dt Mean (s)": 0.1,
+      "Vehicle Strictly Monotonic": true,
+      "Vehicle Max Speed (km/h)": 117.1,
+      "Vehicle Mean Speed (km/h)": 42.3
+    },
+    {
+      "Drive": "S4",
+      "Phone Rows": 94600,
+      "Vehicle Rows": 94600,
+      "Rows Match": true,
+      "Duration (s)": 9459.9,
+      "Phone IMU Mean dt (ms)": 3.75,
+      "Phone IMU Median dt (ms)": 100.0,
+      "Phone IMU Resets": 2,
+      "Phone GPS Fixes": 932,
+      "Phone GPS Mean Inter-Fix (s)": 10.16,
+      "Phone GPS Median Inter-Fix (s)": 9.0,
+      "Phone GPS Effective Rate (Hz)": 0.099,
+      "Vehicle dt Mean (s)": 0.1,
+      "Vehicle Strictly Monotonic": true,
+      "Vehicle Max Speed (km/h)": 109.6,
+      "Vehicle Mean Speed (km/h)": 33.7
+    }
+  ],
+  "phone_details": {
+    "S-S1": {
+      "drive": "S-S1.csv",
+      "total_rows": 51746,
+      "duration_s": 5174.499000001608,
+      "imu_dt_stats": {
+        "mean": 0.09999998067446131,
+        "median": 0.1,
+        "std": 0.0007646277014987145,
+        "min": 0.089,
+        "max": 0.111,
+        "resets_count": 0,
+        "resets_indices": [],
+        "zero_dt_count": 0
+      },
+      "gps_fixes_summary": {
+        "total_changes": 532,
+        "valid_fixes": 531,
+        "mean_inter_fix_s": 9.728813559325038,
+        "median_inter_fix_s": 9.000000000001364,
+        "min_inter_fix_s": 8.898999999996477,
+        "max_inter_fix_s": 70.00100000009479,
+        "effective_rate_hz": 0.10281188574968025
+      }
+    },
+    "S-S2": {
+      "drive": "S-S2.csv",
+      "total_rows": 93876,
+      "duration_s": 9387.500000014154,
+      "imu_dt_stats": {
+        "mean": 0.09801437017310254,
+        "median": 0.1,
+        "std": 0.6083747093953253,
+        "min": -186.301,
+        "max": 0.112,
+        "resets_count": 1,
+        "resets_indices": [
+          1863
+        ],
+        "zero_dt_count": 0
+      },
+      "gps_fixes_summary": {
+        "total_changes": 941,
+        "valid_fixes": 941,
+        "mean_inter_fix_s": 9.973511702142671,
+        "median_inter_fix_s": 9.000000000024556,
+        "min_inter_fix_s": 7.900999999999584,
+        "max_inter_fix_s": 146.0000000000249,
+        "effective_rate_hz": 0.1002396804259474
+      }
+    },
+    "S-S3a": {
+      "drive": "S-S3a.csv",
+      "total_rows": 24621,
+      "duration_s": 2461.9999999998054,
+      "imu_dt_stats": {
+        "mean": 0.1,
+        "median": 0.1,
+        "std": 0.0007830453578777592,
+        "min": 0.087,
+        "max": 0.112,
+        "resets_count": 0,
+        "resets_indices": [],
+        "zero_dt_count": 0
+      },
+      "gps_fixes_summary": {
+        "total_changes": 254,
+        "valid_fixes": 254,
+        "mean_inter_fix_s": 9.699600790513056,
+        "median_inter_fix_s": 9.0,
+        "min_inter_fix_s": 8.899999999996226,
+        "max_inter_fix_s": 64.99999999998067,
+        "effective_rate_hz": 0.10316815597076363
+      }
+    },
+    "S-S3b": {
+      "drive": "S-S3b.csv",
+      "total_rows": 6813,
+      "duration_s": 681.200000000045,
+      "imu_dt_stats": {
+        "mean": -0.2974768056371109,
+        "median": 0.1,
+        "std": 32.8032769930114,
+        "min": -2707.512,
+        "max": 0.105,
+        "resets_count": 1,
+        "resets_indices": [
+          2042
+        ],
+        "zero_dt_count": 0
+      },
+      "gps_fixes_summary": {
+        "total_changes": 74,
+        "valid_fixes": 74,
+        "mean_inter_fix_s": 9.324657534247189,
+        "median_inter_fix_s": 9.000000000000682,
+        "min_inter_fix_s": 8.898999999999518,
+        "max_inter_fix_s": 28.698999999998478,
+        "effective_rate_hz": 0.10863182618907093
+      }
+    },
+    "S-S3c": {
+      "drive": "S-S3c.csv",
+      "total_rows": 37183,
+      "duration_s": 3718.1990000002556,
+      "imu_dt_stats": {
+        "mean": 0.099999973105266,
+        "median": 0.1,
+        "std": 0.0008548116913237227,
+        "min": 0.082,
+        "max": 0.121,
+        "resets_count": 0,
+        "resets_indices": [],
+        "zero_dt_count": 0
+      },
+      "gps_fixes_summary": {
+        "total_changes": 391,
+        "valid_fixes": 390,
+        "mean_inter_fix_s": 9.512817948718595,
+        "median_inter_fix_s": 9.000000000001819,
+        "min_inter_fix_s": 8.80100000000067,
+        "max_inter_fix_s": 60.001000000014756,
+        "effective_rate_hz": 0.10515843826540029
+      }
+    },
+    "S-S4": {
+      "drive": "S-S4.csv",
+      "total_rows": 94600,
+      "duration_s": 9459.899000010062,
+      "imu_dt_stats": {
+        "mean": 0.003750356769099027,
+        "median": 0.1,
+        "std": 21.457132334446108,
+        "min": -5578.0,
+        "max": 0.117,
+        "resets_count": 2,
+        "resets_indices": [
+          35185,
+          90966
+        ],
+        "zero_dt_count": 0
+      },
+      "gps_fixes_summary": {
+        "total_changes": 932,
+        "valid_fixes": 931,
+        "mean_inter_fix_s": 10.157679914081687,
+        "median_inter_fix_s": 9.000000000010004,
+        "min_inter_fix_s": 7.901000000028944,
+        "max_inter_fix_s": 332.00000000012415,
+        "effective_rate_hz": 0.098521136430633
+      }
+    }
+  },
+  "vehicle_details": {
+    "V-S1": {
+      "drive": "V-S1.csv",
+      "total_rows": 51746,
+      "duration_s": 5174.5,
+      "dt_v_stats": {
+        "mean": 0.1,
+        "median": 0.09999999999854481,
+        "std": 6.216999090860725e-06,
+        "min": 0.0989999999947031,
+        "max": 0.10100000000238651,
+        "monotonic": true
+      },
+      "sample_period_stats": {
+        "mean": 0.1,
+        "median": 0.1,
+        "min": 0.099,
+        "max": 0.1009999999999999
+      },
+      "gps_update_frequency_hz": 9.563242825393758,
+      "speed_kmh_stats": {
+        "mean": 26.40095879874773,
+        "max": 93.834,
+        "std": 16.235607304488255
+      }
+    },
+    "V-S2": {
+      "drive": "V-S2.csv",
+      "total_rows": 93876,
+      "duration_s": 9387.5,
+      "dt_v_stats": {
+        "mean": 0.1,
+        "median": 0.09999999999854481,
+        "std": 6.52762233826259e-06,
+        "min": 0.09900000000197906,
+        "max": 0.10100000000238651,
+        "monotonic": true
+      },
+      "sample_period_stats": {
+        "mean": 0.1,
+        "median": 0.1,
+        "min": 0.099,
+        "max": 0.1009999999999999
+      },
+      "gps_update_frequency_hz": 9.546737683089214,
+      "speed_kmh_stats": {
+        "mean": 28.94129185308279,
+        "max": 105.224,
+        "std": 21.143900492646768
+      }
+    },
+    "V-S3a": {
+      "drive": "V-S3a.csv",
+      "total_rows": 24621,
+      "duration_s": 2462.0,
+      "dt_v_stats": {
+        "mean": 0.1,
+        "median": 0.10000000000582077,
+        "std": 7.128953417949148e-12,
+        "min": 0.09999999999126885,
+        "max": 0.10000000000582077,
+        "monotonic": true
+      },
+      "sample_period_stats": {
+        "mean": 0.10000000000000002,
+        "median": 0.1,
+        "min": 0.1,
+        "max": 0.1
+      },
+      "gps_update_frequency_hz": 9.614947197400488,
+      "speed_kmh_stats": {
+        "mean": 37.936858982169696,
+        "max": 98.017,
+        "std": 21.73637182430255
+      }
+    },
+    "V-S3b": {
+      "drive": "V-S3b.csv",
+      "total_rows": 6813,
+      "duration_s": 681.1999999999971,
+      "dt_v_stats": {
+        "mean": 0.09999999999999958,
+        "median": 0.10000000000582077,
+        "std": 7.129040615335608e-12,
+        "min": 0.09999999999126885,
+        "max": 0.10000000000582077,
+        "monotonic": true
+      },
+      "sample_period_stats": {
+        "mean": 0.10000000000000003,
+        "median": 0.1,
+        "min": 0.1,
+        "max": 0.1
+      },
+      "gps_update_frequency_hz": 9.656488549618361,
+      "speed_kmh_stats": {
+        "mean": 19.904979304271244,
+        "max": 44.734,
+        "std": 10.911503827255538
+      }
+    },
+    "V-S3c": {
+      "drive": "V-S3c.csv",
+      "total_rows": 37183,
+      "duration_s": 3718.199999999997,
+      "dt_v_stats": {
+        "mean": 0.09999999999999992,
+        "median": 0.10000000000582077,
+        "std": 7.3341303269548525e-06,
+        "min": 0.09900000000197906,
+        "max": 0.10099999999511056,
+        "monotonic": true
+      },
+      "sample_period_stats": {
+        "mean": 0.10000000000000002,
+        "median": 0.1,
+        "min": 0.099,
+        "max": 0.1009999999999999
+      },
+      "gps_update_frequency_hz": 9.74718950029585,
+      "speed_kmh_stats": {
+        "mean": 42.30827821854073,
+        "max": 117.122,
+        "std": 29.72208132334366
+      }
+    },
+    "V-S4": {
+      "drive": "V-S4.csv",
+      "total_rows": 94600,
+      "duration_s": 9459.900000000001,
+      "dt_v_stats": {
+        "mean": 0.10000000000000002,
+        "median": 0.09999999999854481,
+        "std": 4.598029185474273e-06,
+        "min": 0.09900000000197906,
+        "max": 0.10099999999511056,
+        "monotonic": true
+      },
+      "sample_period_stats": {
+        "mean": 0.1,
+        "median": 0.1,
+        "min": 0.099,
+        "max": 0.1009999999999999
+      },
+      "gps_update_frequency_hz": 9.209505385892028,
+      "speed_kmh_stats": {
+        "mean": 33.65000421775899,
+        "max": 109.631,
+        "std": 25.121535990895406
+      }
+    }
+  }
+}
