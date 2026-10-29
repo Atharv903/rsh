@@ -8,5 +8,7 @@ __pycache__/
 checkpoints/
 data/raw/
 data/processed/*.npz
+!data/processed/*_grouped.npz
 data/processed/*.csv
+!data/processed/*_scenarios.json
 Synchronised V abd S datasets/

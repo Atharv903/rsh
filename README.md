@@ -4,7 +4,7 @@
 [![Tests](https://img.shields.io/badge/Unit%20Tests-25%20Passed-brightgreen.svg)](#automated-validation)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](#environment-setup)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.1%2B%20%7C%20CUDA%20%26%20CPU-orange.svg)](#environment-setup)
-[![Colab](https://img.shields.io/badge/Colab-GPU%20Ready-yellow.svg)](notebooks/colab_gpu_benchmark.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Atharv903/rsh/blob/main/notebooks/colab_gpu_benchmark.ipynb)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](#license)
 
 ---
