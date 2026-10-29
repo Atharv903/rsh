@@ -29,26 +29,26 @@ The framework resolves the unobservable 2D velocity trap by reformulating the ta
 ### 1. Speed Estimation Accuracy
 Across 9 models (3 architectures $\times$ 3 seeds: 42, 123, 456) evaluated on the independent holdout test set (Drive S4, 9,117 windows):
 
-| Model / Baseline | Params | Latency ($B=1$, CPU) | Test MAE (m/s) | Test RMSE (m/s) | High-Speed MAE ($s \ge 15$) |
+| Model / Baseline | Params | Latency ($B=1$, GPU) | Test MAE (m/s) | Test RMSE (m/s) | High-Speed MAE ($s \ge 15$) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Zero-Speed Baseline** | — | — | 9.68 | 11.88 | 18.25 |
 | **Train-Mean Baseline (10.9 m/s)** | — | — | 5.66 | 7.13 | 7.35 |
 | *Stride-1 Persistence (Leaked)* | — | — | *0.46* | *0.67* | *0.61* |
-| **CNN-GRU Baseline** | 250,689 | 13.16 $\pm$ 0.19 ms | 3.04 $\pm$ 0.75 | 4.65 $\pm$ 1.07 | 8.69 $\pm$ 2.49 |
-| **Mamba-2 SSD (Custom)** | **217,153** | 7.61 $\pm$ 0.55 ms | 2.72 $\pm$ 0.06 | 4.21 $\pm$ 0.09 | 7.60 $\pm$ 0.20 |
-| **ModernTCN** | 413,825 | **5.85 $\pm$ 0.43 ms** | **2.56 $\pm$ 0.12** | **3.80 $\pm$ 0.25** | **6.03 $\pm$ 1.12** |
+| **CNN-GRU Baseline** | 250,689 | **0.86 $\pm$ 0.05 ms** | 2.56 $\pm$ 0.08 | 3.96 $\pm$ 0.17 | 7.07 $\pm$ 0.38 |
+| **Mamba-2 SSD (Custom)** | **217,153** | 1.97 $\pm$ 0.08 ms | **2.52 $\pm$ 0.20** | 3.98 $\pm$ 0.29 | 6.98 $\pm$ 0.85 |
+| **ModernTCN** | 413,825 | 1.29 $\pm$ 0.05 ms | 2.62 $\pm$ 0.19 | **3.92 $\pm$ 0.34** | **6.50 $\pm$ 1.09** |
 
 - **Root Cause of Historical 9.8 m/s Anomaly:** Zero-Speed baseline MAE is **9.68 m/s**, proving that historical models collapsed to $[0, 0]$ due to unobservable 2D velocity targets.
-- **Top Speed Estimator:** ModernTCN achieved the lowest test error (**2.56 m/s MAE**, $15.8\%$ reduction over CNN-GRU) and lowest CPU latency (**5.85 ms**).
-- **Mamba-2 Stability:** Mamba-2 demonstrated the lowest parameter footprint (**217k params**) and tightest seed variance ($\pm 0.056\text{ m/s}$).
+- **Top Speed Estimator:** Mamba-2 achieved the lowest overall average test error (**2.52 m/s MAE**; single best run **2.315 m/s** on Seed 123) with the lowest parameter count (**217k params**).
+- **Sub-Millisecond Inference:** On GPU, CNN-GRU executes in **0.86 ms**, ModernTCN in **1.29 ms**, and Mamba-2 in **1.97 ms** ($>50\times$ faster than real-time 10 Hz requirements).
 
 ### 2. Trajectory Dead-Reckoning (Simulated GNSS Outages)
 
 | Outage Duration | Constant-Velocity Drift | CNN-GRU Drift | Mamba-2 SSD Drift | ModernTCN Drift | Neural Drift Reduction |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| **10 Seconds** | 32.37 m (28.5%) | 36.21 m (31.3%) | **32.57 m (27.9%)** | 37.68 m (32.3%) | *Constant-velocity competitive* |
-| **30 Seconds** | 214.05 m (101.0%) | **162.20 m (57.5%)** | 169.40 m (60.3%) | 168.64 m (59.2%) | **24.2% drift reduction** |
-| **60 Seconds** | 353.98 m (82.4%) | **297.97 m (62.2%)** | 301.75 m (62.1%) | 312.15 m (63.9%) | **56.0 m drift reduction** |
+| **10 Seconds** | **40.47 m (45.5%)** | 89.64 m (100.9%) | 89.66 m (100.9%) | 88.78 m (99.9%) | *Constant-velocity competitive* |
+| **30 Seconds** | 194.71 m (98.1%) | 198.25 m (99.9%) | 198.29 m (99.9%) | **195.65 m (98.6%)** | *Matched dynamics* |
+| **60 Seconds** | 432.86 m (121.6%) | 354.38 m (99.6%) | 354.47 m (99.6%) | **349.18 m (98.1%)** | **83.68 m drift reduction (19.3%)** |
 
 ---
 
