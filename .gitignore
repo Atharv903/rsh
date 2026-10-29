@@ -5,6 +5,7 @@ __pycache__/
 *.bin
 *.pt
 **/*.pt
+!experiments/phase8_corrected_speed_models/checkpoints/**/best_model.pt
 checkpoints/
 data/raw/
 data/processed/*.npz
