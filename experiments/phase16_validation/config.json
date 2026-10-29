@@ -1,0 +1,46 @@
+{
+  "phase": "Phase 16: Uncertainty-Aware ESKF & Non-Holonomic Constraints",
+  "timestamp": "2026-10-30",
+  "baseline_commit": "3c5a181",
+  "num_scenarios": 30,
+  "configurations": [
+    "A_Constant-Velocity",
+    "B_ModernTCN",
+    "C_Phase14-Causal-Hybrid",
+    "D_ESKF-IMU-Only",
+    "E_ESKF-Learned-Speed",
+    "F_ESKF-Speed-NHC",
+    "G_ESKF-Speed-NHC-ZUPT",
+    "H_ESKF-Hybrid-NHC-ZUPT"
+  ],
+  "protocols": [
+    "Protocol_A_ZeroBias",
+    "Protocol_B_PriorCalib",
+    "Protocol_C_CausalOnline"
+  ],
+  "eskf_parameters": {
+    "state_dimension": 6,
+    "state_variables": [
+      "p_e",
+      "p_n",
+      "v_e",
+      "v_n",
+      "psi",
+      "b_g"
+    ],
+    "process_noise": {
+      "q_pos": 0.01,
+      "q_vel": 0.2,
+      "q_psi": 0.002,
+      "q_bg": 1e-06
+    },
+    "measurement_noise": {
+      "var_nhc": 0.1,
+      "var_zupt": 0.0025
+    },
+    "innovation_gates": {
+      "speed": 16.0,
+      "nhc": 9.0
+    }
+  }
+}
