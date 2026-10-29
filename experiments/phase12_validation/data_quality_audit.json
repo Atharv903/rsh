@@ -1,0 +1,41 @@
+{
+  "audit_timestamp": "2026-10-29",
+  "evaluated_independent_sessions": {
+    "Driver_B_M_seg1": {
+      "driver": "Driver B",
+      "session": "M (Driver B)",
+      "date": "2019-09-07",
+      "segment": "M_seg1",
+      "samples": 61714,
+      "duration_minutes": 102.9,
+      "mean_gravity_z": 9.81,
+      "phone_mounting": "Flat horizontal console facing upwards",
+      "yaw_rate_channel": "GYROSCOPE Pitch (rad/s)",
+      "corr_gyro_yaw_rate": 0.8811,
+      "corr_heading_rate": -0.6946,
+      "time_shift_samples": 34,
+      "status": "VALID_SYNCHRONIZED"
+    },
+    "Driver_D_Y1_seg3": {
+      "driver": "Driver D",
+      "session": "Y1 (Driver D)",
+      "date": "2019-08-30",
+      "segment": "Y1_seg3",
+      "samples": 65761,
+      "duration_minutes": 109.6,
+      "mean_gravity_z": 9.81,
+      "phone_mounting": "Flat horizontal console facing upwards",
+      "yaw_rate_channel": "GYROSCOPE Pitch (rad/s)",
+      "corr_gyro_yaw_rate": 0.6802,
+      "corr_heading_rate": -0.6814,
+      "time_shift_samples": 1149,
+      "status": "VALID_SYNCHRONIZED"
+    }
+  },
+  "unsuitable_sessions_documentation": {
+    "Driver_E_Vfa01": "November 2019 session; post-alignment correlation near zero (0.27 max cross-correlation). Clock drift or different vehicle mounting.",
+    "Driver_E_Vfa02": "November 2019 session; post-alignment correlation +0.011.",
+    "Driver_E_Vta_series": "Checked all 30 Vta sessions; correlation with yaw rate < 0.25 across all drives.",
+    "Driver_E_Vw_series": "Mismatched row counts (20476 vs 20475) and weak gyro correlation."
+  }
+}

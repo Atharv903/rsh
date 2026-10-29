@@ -90,6 +90,7 @@ def run_causal_dead_reckoning(
     drive_id: str,
     window_size: int = 100,
     feature_channels: List[str] = ["accel_x", "accel_y", "accel_z", "gyro_yaw", "gyro_pitch", "gyro_roll"],
+    heading_convention: str = "corrected",  # "corrected" (-1.0) or "legacy" (+1.0)
 ) -> OutageEvaluationResult:
     """Executes strictly causal step-by-step navigation during a simulated GPS outage.
     
@@ -101,6 +102,9 @@ def run_causal_dead_reckoning(
         scenario_id: Outage scenario identifier.
         drive_id: Drive identifier.
         window_size: Length of sliding window in samples.
+        feature_channels: List of sensor channel names.
+        heading_convention: "corrected" uses d_psi = -omega_yaw * dt (clockwise azimuth),
+                            "legacy" uses d_psi = +omega_yaw * dt (original repo bug).
     """
     n_steps = len(in_outage_df)
     time_arr = in_outage_df["time_s"].values
@@ -132,13 +136,17 @@ def run_causal_dead_reckoning(
     pred_speed[0] = pre_state.speed_mps
     pred_heading[0] = np.deg2rad(pre_state.heading_deg)
     
+    h_sign = -1.0 if heading_convention == "corrected" else +1.0
+
     for k in range(1, n_steps):
         dt = dt_arr[k]
         
-        # 1. Causal Heading Propagation: psi_k = psi_{k-1} + omega_yaw * dt
-        # Note: Vehicle Heading azimuth = 0 at North, clockwise.
-        # Right turn increases azimuth angle: d_psi = +omega_yaw * dt
-        d_psi = float(gyro_yaw_rate[k] * dt)
+        # 1. Causal Heading Propagation: psi_k = psi_{k-1} + d_psi
+        # Navigation azimuth psi increases clockwise from North.
+        # Body frame yaw rate omega_yaw is right-handed (positive counter-clockwise).
+        # Corrected: d_psi = -omega_yaw * dt.
+        # Legacy bug: d_psi = +omega_yaw * dt.
+        d_psi = h_sign * float(gyro_yaw_rate[k] * dt)
         pred_heading[k] = (pred_heading[k-1] + d_psi) % (2.0 * np.pi)
         
         # 2. Causal Speed Estimation

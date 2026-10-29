@@ -1,0 +1,51 @@
+{
+  "experiment_name": "Phase 12 Navigation Correction & Expanded Independent Validation",
+  "timestamp": "2026-10-29",
+  "git_commit": "13a87aa",
+  "dataset_archive": "Categorised IOVNB Dataset",
+  "sessions": [
+    {
+      "session_name": "M (Driver B)",
+      "driver": "Driver B",
+      "date": "2019-09-07",
+      "segment_evaluated": "M_seg1",
+      "num_scenarios": 15,
+      "heading_convention_tested": [
+        "corrected (-1)",
+        "legacy (+1)"
+      ]
+    },
+    {
+      "session_name": "Y1 (Driver D)",
+      "driver": "Driver D",
+      "date": "2019-08-30",
+      "segment_evaluated": "Y1_seg3",
+      "num_scenarios": 15,
+      "heading_convention_tested": [
+        "corrected (-1)"
+      ]
+    }
+  ],
+  "models_evaluated": [
+    "Constant-Velocity",
+    "Zero-Speed",
+    "cnngrumodel_seed42",
+    "cnngrumodel_seed123",
+    "cnngrumodel_seed456",
+    "mamba2model_seed42",
+    "mamba2model_seed123",
+    "mamba2model_seed456",
+    "moderntcnmodel_seed42",
+    "moderntcnmodel_seed123",
+    "moderntcnmodel_seed456"
+  ],
+  "normalization": "data/processed/sensor_normalizer_grouped.json (fitted exclusively on S1+S2)",
+  "durations_s": [
+    10,
+    30,
+    60
+  ],
+  "trials_per_duration": 5,
+  "total_scenarios": 30,
+  "total_runs": 330
+}
